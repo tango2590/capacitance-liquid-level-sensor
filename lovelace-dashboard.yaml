@@ -1,0 +1,45 @@
+  - theme: Backend-selected
+    title: Capacitance
+    path: capacitance-dashboard
+    badges: []
+    cards:
+      - type: custom:apexcharts-card
+        graph_span: 5min
+        header:
+          show: true
+          show_states: true
+          colorize_states: true
+        now:
+          show: false
+          color: Red
+          label: Now
+        apex_config:
+          stroke:
+            width: 2
+          yaxis:
+            min: 0
+            max: 100
+            forceNiceScale: true
+        series:
+          - entity: sensor.original_capacity_readings
+            name: OG Cap Readings
+      - type: custom:apexcharts-card
+        graph_span: 5min
+        header:
+          show: true
+          show_states: true
+          colorize_states: true
+        now:
+          show: false
+          color: Red
+          label: Now
+        apex_config:
+          stroke:
+            width: 2
+          yaxis:
+            min: 0
+            max: 100
+            forceNiceScale: true
+        series:
+          - entity: sensor.capacity_readings
+            name: Capacity Readings
