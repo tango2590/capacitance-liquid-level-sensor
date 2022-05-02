@@ -1,0 +1,85 @@
+captive_portal:
+esp32_touch:
+  setup_mode: true
+
+binary_sensor:
+#Tank One
+  - platform: esp32_touch
+    name: "Tank One Sensor"
+    pin: GPIO13
+    threshold: 1000
+    id: tank_one_sensor
+#Tank Two (OPTIONAL - ADD OR REMOVE BASED ON NUMBER OF TANKS)
+  - platform: esp32_touch
+    name: "Tank Two Sensor"
+    pin: GPIO12
+    threshold: 1000
+    id: tank_two_sensor
+
+sensor:
+###Readings calculated from espTouch sensors ###
+#Tank One
+  - platform: template
+    name: "Tank One Readings"
+    id: "tank_one_readings"
+    update_interval: 3s
+    accuracy_decimals: 0
+    filters:
+      - calibrate_polynomial:
+          degree: 5
+          datapoints:
+          # Map 0.0 (from sensor) to 0.0 (true value)
+          - 880 -> 0
+          - 823 -> 6.25
+          - 723 -> 12.5
+          - 613 -> 18.75
+          - 554 -> 25
+          - 481 -> 31.25
+          - 422 -> 37.5
+          - 385 -> 43.75
+          - 355 -> 50
+          - 333 -> 56.25
+          - 311 -> 62.5
+          - 305 -> 68.75
+          - 273 -> 75
+          - 267 -> 81.25
+          - 246 -> 87.5
+          - 238 -> 93.75
+          - 222 -> 100
+    lambda: |-
+      return ((uint32_t) id(tank_one_sensor)->get_value());
+
+#Tank Two (OPTIONAL - ADD OR REMOVE BASED ON NUMBER OF TANKS)
+  - platform: template
+    name: "Tank Two Readings"
+    id: "tank_two_readings"
+    update_interval: 3s
+    accuracy_decimals: 0
+    filters:
+      - calibrate_polynomial:
+          degree: 1
+          datapoints:
+          # Map 0.0 (from sensor) to 0.0 (true value)
+          - 1040 -> 0
+#          - 211 -> 50
+          - 134 -> 100
+    lambda: |-
+      return ((uint32_t) id(tank_two_sensor)->get_value());
+
+### Readings calculated from espTouch sensors ###
+#Tank One
+  - platform: template
+    name: "Tank One Original Capacity Readings"
+    id: "tank_one_original_capacity_readings"
+    update_interval: 3s
+    accuracy_decimals: 0
+    lambda: |-
+      return ((uint32_t) id(tank_one_sensor)->get_value());
+#Tank Two (OPTIONAL - ADD OR REMOVE BASED ON NUMBER OF TANKS)
+  - platform: template
+    name: "Tank Two Original Capacity Readings"
+    id: "original_capacity_readings"
+    update_interval: 3s
+    accuracy_decimals: 0
+    lambda: |-
+      return ((uint32_t) id(tank_two_sensor)->get_value());
