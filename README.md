@@ -6,7 +6,7 @@ of this project is aimed at improving the monitoring of RV holding tanks
 with the use of HomeAssistant, this type of liquid level measurement can
 also be used in a variety of other applications.
 
-**How does it work?**
+#How does it work?
 
 This project uses the concept of electromagnetic fringe fields and
 capacitance to determine the current level of a liquid inside of a tank
