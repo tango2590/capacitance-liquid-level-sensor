@@ -45,9 +45,9 @@ vary.
     can monitor as many tanks as there are Touch GPIOs available. The
     ESP32 will need to be powered via 5v to ensure adequate
     capacitance values.\
-    \**IMPORTANT: The use of GPIOs 0, 2, 4, 5, 12, and 15 will result
+    ***IMPORTANT: The use of GPIOs 0, 2, 4, 5, 12, and 15 will result
     in a "strapping pin" error during setup. Avoid these pins if
-    possible.\
+    possible.*
 
 **TANK SETUP**
 
@@ -77,17 +77,17 @@ vary.
     found above and paste it below "captive_portal". Make adjustments
     to correlate with your specific device as needed.
 
-This code creates 2 sensors in HomeAssistant. The first is the
-straight capacitance value taken from the log which is needed for
-setup and can be used for debugging later on. The second sensor maps
-the capacitance values to the desired percentage values which will be
-gathered in the next step. An example yaml dashboard is provided.
+    This code creates 2 sensors in HomeAssistant. The first is the
+    straight capacitance value taken from the log which is needed for
+    setup and can be used for debugging later on. The second sensor maps
+    the capacitance values to the desired percentage values which will be
+    gathered in the next step. An example yaml dashboard is provided.
 
 *Please note this example dashboard uses the [[ApexCharts]{.ul}](https://github.com/RomRider/apexcharts-card) card.*
 
 **TANK CALIBRATION**
 
-*\*Before proceeding, the tanks involved will need to be emptied. It is recommended that you flush your black tank if able to do so in order to get the most accurate baseline readings.*
+*Before proceeding, the tanks involved will need to be emptied. It is recommended that you flush your black tank if able to do so in order to get the most accurate baseline readings.*
 
 6.  For each tank you choose to monitor, calibration is required.
     Calibration requires a container with a known volume (1 gallon
@@ -111,10 +111,10 @@ gathered in the next step. An example yaml dashboard is provided.
     current calibration. If values appear incorrect, repeat step 7 and
     adjust datapoints accordingly.
 
-Datapoints should be in the following format:
+    Datapoints should be in the following format:
 
-\- Capacity Reading -\> Mapped Percent
-\- 426 -\> 37
+    - Capacity Reading -> Mapped Percent
+    - 426 -> 37
 
 8.  Once a good accuracy is achieved, change the sensor update rate in
     ESPHome from 3 seconds to your preferred rate, such as 15 minutes.
