@@ -86,7 +86,7 @@ vary.
 
     **Please note this example dashboard uses the [ApexCharts](https://github.com/RomRider/apexcharts-card) card.*
 
-## TANK CALIBRATION
+### TANK CALIBRATION
 
 **Before proceeding, the tanks involved will need to be emptied. It is recommended that you flush your black tank if able to do so in order to get the most accurate baseline readings.*
 
