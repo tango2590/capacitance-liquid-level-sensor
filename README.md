@@ -6,7 +6,7 @@ of this project is aimed at improving the monitoring of RV holding tanks
 with the use of HomeAssistant, this type of liquid level measurement can
 also be used in a variety of other applications.
 
-#How does it work?
+### How does it work?
 
 This project uses the concept of electromagnetic fringe fields and
 capacitance to determine the current level of a liquid inside of a tank
@@ -16,7 +16,7 @@ created. As the level of the liquid increases, the "fringe" decreases.
 Therefore, metal tanks or tanks with metal cages will not work. It is
 recommended that you use plastic or fiberglass tanks ¼" thick or less.
 
-**[Materials Needed]**
+### Materials Needed
 
 -   NodeMCU ESP32 or ESP8266
 
@@ -32,7 +32,7 @@ recommended that you use plastic or fiberglass tanks ¼" thick or less.
 
 -   *Sewer connection during tank calibration is highly recommended*
 
-**Instructions**
+# Instructions
 
 Each setup is based on the tank, the type of liquid being measured, and
 the amount of additional noise picked up by the ESP device. Results may
@@ -44,12 +44,13 @@ vary.
     equivalent to Touch 4), and another one on a GND. A single ESP32
     can monitor as many tanks as there are Touch GPIOs available. The
     ESP32 will need to be powered via 5v to ensure adequate
-    capacitance values.\
+    capacitance values.
+    <br><br />
     ***IMPORTANT: The use of GPIOs 0, 2, 4, 5, 12, and 15 will result
     in a "strapping pin" error during setup. Avoid these pins if
     possible.*
 
-**TANK SETUP**
+### TANK SETUP
 
 3.  Cut 2 identical strips of aluminum tape so that they reach from the
     bottom to the top of your tank.. Clean the side of the tank and
@@ -57,21 +58,21 @@ vary.
     readings in future steps, the distance between the strips can be
     adjusted to facilitate better capacitance readings if
     needed.
-    
+    <br><br />
     ![Adhesive Tape](images/adhesive_tape.jpg)
-
+    <br><br />
 4.  Cut four 2-inch strips of copper tape and place them in the center
     of the strip, forming a roughly 2"x2" square with a slight
     overlap. Where the pieces overlap, place one of the GPIO jumper
     wires and secure. Ensure there is good contact with the copper
     tape.
-    
+    <br><br />
+    **Additional copper strips may be needed to secure the wire.*
+    <br><br />
     ![Adhesive Tape Wired-Up](images/adhesive_tape_wired-up.jpg)
-    
-    *Additional copper strips may be needed to secure the wire.
-    
+    <br><br />
     ![Both Tanks](images/both_tanks.jpg)
-
+    <br><br />
 5.  Open HomeAssistant, navigate to ESPHome, and follow the directions
     to setup your ESP32. Once initial setup is complete, copy the code
     found above and paste it below "captive_portal". Make adjustments
@@ -83,11 +84,11 @@ vary.
     the capacitance values to the desired percentage values which will be
     gathered in the next step. An example yaml dashboard is provided.
 
-*Please note this example dashboard uses the [[ApexCharts]{.ul}](https://github.com/RomRider/apexcharts-card) card.*
+    **Please note this example dashboard uses the [ApexCharts](https://github.com/RomRider/apexcharts-card) card.*
 
-**TANK CALIBRATION**
+## TANK CALIBRATION
 
-*Before proceeding, the tanks involved will need to be emptied. It is recommended that you flush your black tank if able to do so in order to get the most accurate baseline readings.*
+**Before proceeding, the tanks involved will need to be emptied. It is recommended that you flush your black tank if able to do so in order to get the most accurate baseline readings.*
 
 6.  For each tank you choose to monitor, calibration is required.
     Calibration requires a container with a known volume (1 gallon
@@ -103,8 +104,9 @@ vary.
     gallons. It is approximately 25% full with 12.5 gallons.\
     This is an example of how I recorded my data. The graph is not
     needed.
-    ![Adhesive Tape](images/graph.png) height="2.3766272965879267in"}
-
+    <br><br />
+    ![Adhesive Tape](images/graph.png)
+    <br><br />
 7.  With the capacitance values recorded, open ESPHome and edit the
     code, adding in your capacitance values and their corresponding
     percentage under "datapoints:\". Update your ESP32 and test your
