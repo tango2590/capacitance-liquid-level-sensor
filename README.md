@@ -1,10 +1,22 @@
 # Capacitance Liquid Level Sensor
 
+*** *As of October 2022, this project is on hold for me due to winter weather. Work is expected to resume Spring 2023.* ***
+
 The goal of this project is to determine the level of a liquid inside of
 a tank without making direct contact with that liquid. While the intent
 of this project is aimed at improving the monitoring of RV holding tanks
 with the use of HomeAssistant, this type of liquid level measurement can
 also be used in a variety of other applications.
+
+Please note that I am having some difficulties getting readings on my RV tanks. Graphs and data used in this repo are from small-scale test containers (<=15 gallons), including glass and hard plastic. Initial tests were overwhelmingly positive, however the RV application portion of this project is still very much a work in progress. Results will vary based on tank material and thickness. This project *should* work, considering there are products on the market that do the exact same thing (SeeLevel, for example). If you have any interest in collaboration, please reach out to me.
+
+### Ideas for Large Scale Use (>20 gallons) On RV Tanks
+*Untested ideas that have been suggested by others.*
+- Add 3v, 5v, or 12v across the strips to increase the electromagneic field between the strips. Could help with thicker tanks less conductive materials.
+- Decrease the distance between the adhesive strips
+- Decrease length of wire between adhesive strips and ESP32
+- Increase thickness of strips
+- Add additional copper strips
 
 ### How does it work?
 
